@@ -30,6 +30,11 @@ const products = [
 ];
 
 const navItems = ["الرئيسية", "المنتجات", "الأقسام", "من نحن", "تواصل معنا"];
+const features = [
+  { icon: Truck, title: "توصيل موثوق", text: "تغليف آمن حتى باب بيتك" },
+  { icon: Heart, title: "دعم مباشر", text: "للحرفيين والمشاريع المحلية" },
+  { icon: Star, title: "جودة مختارة", text: "منتجات أصيلة بعناية" },
+];
 
 function Index() {
   const [cartCount, setCartCount] = useState(0);
@@ -116,7 +121,7 @@ function Index() {
 
         <section id="story" className="keffiyeh-line bg-card py-16 sm:py-20"><div className="container-store grid items-center gap-10 lg:grid-cols-2"><div className="grid grid-cols-2 gap-3"><img src={tatreezImage} width={912} height={912} loading="lazy" alt="تطريز فلسطيني يدوي" className="aspect-[4/5] w-full rounded-lg object-cover"/><img src={ceramicImage} width={912} height={912} loading="lazy" alt="فخار فلسطيني مزخرف بالزيتون" className="mt-8 aspect-[4/5] w-full rounded-lg object-cover"/></div><div className="max-w-xl"><p className="text-sm font-bold text-flag-red">أكثر من متجر</p><h2 className="mt-3 text-3xl font-bold leading-snug sm:text-4xl">كل قطعة تحمل حكاية فلسطينية</h2><p className="mt-5 leading-8 text-muted-foreground">نجمع لك منتجات صُنعت بشغف على أيدي حرفيين ومشاريع عائلية محلية. باختيارك من متجر فلسطين، تحافظ على حرفة وتساند بيتًا وتُبقي الحكاية حيّة.</p><Button variant="outline" className="mt-7">تعرّف على قصتنا <span aria-hidden="true">←</span></Button></div></div></section>
 
-        <section className="bg-primary py-10 text-primary-foreground"><div className="container-store grid gap-7 sm:grid-cols-3">{[[Truck,"توصيل موثوق","تغليف آمن حتى باب بيتك"],[Heart,"دعم مباشر","للحرفيين والمشاريع المحلية"],[Star,"جودة مختارة","منتجات أصيلة بعناية"]].map(([Icon,title,text]) => { const FeatureIcon = Icon; return <div key={title as string} className="flex items-center gap-4"><span className="grid size-12 shrink-0 place-items-center rounded-lg bg-primary-foreground/10"><FeatureIcon className="size-5"/></span><div><h3 className="font-bold">{title as string}</h3><p className="mt-1 text-sm text-primary-foreground/75">{text as string}</p></div></div>})}</div></section>
+        <section className="bg-primary py-10 text-primary-foreground"><div className="container-store grid gap-7 sm:grid-cols-3">{features.map(({ icon: FeatureIcon, title, text }) => <div key={title} className="flex items-center gap-4"><span className="grid size-12 shrink-0 place-items-center rounded-lg bg-primary-foreground/10"><FeatureIcon className="size-5"/></span><div><h3 className="font-bold">{title}</h3><p className="mt-1 text-sm text-primary-foreground/75">{text}</p></div></div>)}</div></section>
       </main>
 
       <footer id="footer" className="bg-foreground py-12 text-background"><div className="container-store grid gap-10 border-b border-background/15 pb-10 md:grid-cols-[1.4fr_1fr_1fr]"><div><h2 className="font-display text-2xl font-bold">متجر فلسطين</h2><p className="mt-3 max-w-md text-sm leading-7 text-background/70">منصة تجمع أصالة المنتج الفلسطيني وتقرّبه إلى كل بيت، بمحبة ومسؤولية.</p></div><div><h3 className="font-bold">روابط سريعة</h3><div className="mt-4 grid gap-2 text-sm text-background/70"><a href="#products">المنتجات</a><a href="#categories">الأقسام</a><a href="#story">من نحن</a></div></div><div><h3 className="font-bold">ابقَ قريبًا</h3><p className="mt-3 text-sm text-background/70">اشترك لتصلك الحكايات والمنتجات الجديدة.</p><form className="mt-4 flex" onSubmit={(event) => {event.preventDefault(); setNotice("شكرًا لاشتراكك في نشرتنا");}}><input type="email" required aria-label="البريد الإلكتروني" placeholder="بريدك الإلكتروني" className="min-w-0 flex-1 rounded-r-lg border border-background/20 bg-background/10 px-3 text-sm outline-none placeholder:text-background/50"/><Button type="submit" className="rounded-r-none">اشتراك</Button></form></div></div><div className="container-store pt-6 text-center text-xs text-background/55">© 2026 متجر فلسطين — بكل حب من أرضنا</div></footer>
